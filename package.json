@@ -1,0 +1,23 @@
+{
+  "name": "trippartner-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TripPartner website (server-rendered from MySQL) + admin dashboard + API",
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
+    "migrate": "node --env-file-if-exists=.env tools/migrate.js",
+    "test": "node --test tools/content.test.js tools/api.test.js",
+    "backup": "node --env-file-if-exists=.env tools/db-backup.js",
+    "export-sql": "node --env-file-if-exists=.env tools/db-export-sql.js",
+    "demo": "python3 tools/build-demo.py"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "mysql2": "^3.24.6"
+  }
+}

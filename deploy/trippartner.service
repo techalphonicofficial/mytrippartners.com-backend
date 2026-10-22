@@ -1,0 +1,15 @@
+# systemd alternative to PM2 (API + dashboard; the website is trippartner-web.service):  sudo cp deploy/trippartner.service /etc/systemd/system/ && sudo systemctl enable --now trippartner
+[Unit]
+Description=TripPartner API + staff dashboard (Express)
+After=network.target mysql.service mariadb.service
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/trippartner/backend
+ExecStart=/usr/bin/node --env-file=/var/www/trippartner/backend/.env server.js
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
